@@ -96,7 +96,7 @@
 
 ## 代理API
 
-- [x] **OpenAI**：https://proxyhost/api/proxy/openai
+- **OpenAI**：https://proxyhost/api/proxy/openai
 
   ```bash
   curl https://proxyhost/api/proxy/openai/v1/completions \
@@ -105,11 +105,28 @@
     -d '{"prompt": YOUR_PROMPT, "model": MODEL}'
   ```
 
-- [x] **Gemini-Pro**：https://proxyhost/api/proxy/gemini-pro
+- **Google**：https://proxyhost/api/proxy/google
 
   ```bash
   curl \
     -H 'Content-Type: application/json' \
     -d '{"contents":[{"parts":[{"text":"Hello"}]}]}' \
-    -X POST https://proxyhost/api/proxy/gemini-pro?key=YOUR_API_KEY
+    -X POST https://proxyhost/api/proxy/google/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY
+  ```
+
+- **Anthropic**：https://proxyhost/api/proxy/anthropic
+
+  ```bash
+  curl https://proxyhost/api/proxy/anthropic/v1/messages \
+      --header "x-api-key: $ANTHROPIC_API_KEY" \
+      --header "anthropic-version: 2023-06-01" \
+      --header "content-type: application/json" \
+      --data \
+  '{
+      "model": "claude-3-opus-20240229",
+      "max_tokens": 1024,
+      "messages": [
+          {"role": "user", "content": "Hello, world"}
+      ]
+  }'
   ```

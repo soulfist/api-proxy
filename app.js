@@ -3,7 +3,7 @@ import https from "https";
 import fs from "fs";
 import app from './api/proxy.js';
 
-const PORT = 443;
+const PORT = process.env.PORT || 443;
 
 // 证书路径
 const PRIVATE_KEY = "./certs/key.pem";
